@@ -69,6 +69,12 @@
                         <action selector="clickedOpen:" target="Voe-Tx-rLC" id="7Cv-q4-hhD"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Connect cloud account" id="xc-cloud-join">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickedCloudAccount:" target="Voe-Tx-rLC" id="xc-cloud-action"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Folders" id="Gbh-kn-bEe">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Folders" id="0Tt-4w-4MD">

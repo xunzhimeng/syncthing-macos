@@ -12,6 +12,15 @@ SYNCTHING_TARBALL="${DL_DIR}/syncthing-${SYNCTHING_VERSION}.zip"
 APP_RESOURCES_DIR="${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Resources"
 TAR_DIR="${APP_RESOURCES_DIR}/syncthing"
 
+# Explicit opt-in for downstream builds: package the tested XunCloud core,
+# without downloading or replacing the user's running service.
+if [[ -n "${XUNCLOUD_CORE_BINARY:-}" ]]; then
+    [[ -x "${XUNCLOUD_CORE_BINARY}" ]] || { echo "Invalid XUNCLOUD_CORE_BINARY" >&2; exit 1; }
+    mkdir -p "${TAR_DIR}"
+    install -m 755 "${XUNCLOUD_CORE_BINARY}" "${TAR_DIR}/syncthing"
+    exit 0
+fi
+
 # Download syncthing tarball
 if [ -f "${SYNCTHING_TARBALL}" ]; then
     echo "-- Syncthing already downloaded"

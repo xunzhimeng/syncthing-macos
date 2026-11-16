@@ -230,6 +230,19 @@
     self.devicesPaused = allPaused;
 }
 
+- (IBAction) clickedCloudAccount:(id)sender {
+    NSURLComponents *components = [NSURLComponents componentsWithString:[_syncthing URI]];
+    if (![@[@"http", @"https"] containsObject:components.scheme.lowercaseString] ||
+        ![@[@"localhost", @"127.0.0.1", @"::1", @"[::1]"] containsObject:components.host.lowercaseString]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = @"Open the local Syncthing connection to connect a cloud account.";
+        [alert runModal];
+        return;
+    }
+    components.queryItems = @[[NSURLQueryItem queryItemWithName:@"cloud" value:@"join"]];
+    [[NSWorkspace sharedWorkspace] openURL:components.URL];
+}
+
 - (IBAction) clickedOpen:(id)sender {
     NSURL *URL = [NSURL URLWithString:[_syncthing URI]];
     [[NSWorkspace sharedWorkspace] openURL:URL];

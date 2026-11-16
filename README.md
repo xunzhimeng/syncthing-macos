@@ -6,6 +6,10 @@
 > [!NOTE]  
 > Syncthing v2 is the supported version since 23 february 2026. It needs at least macOS 12. Syncthing v1 is deprecated and will not get any updates or bugfixes. For version compatibility see [README.md#macos-version-support](https://github.com/syncthing/syncthing-macos/blob/v2/README.md#macos-version-support).
 
+# XunCloud account sync
+
+This branch includes a local **Connect cloud account** menu. See [XUNCLOUD.md](XUNCLOUD.md) for bundling the account-aware core; changing the wrapper alone does not enable server account login.
+
 # Introduction
 
 `syncthing-macos` project is a [frugal](https://en.wikipedia.org/wiki/Frugality) [native](https://en.wikipedia.org/wiki/Native_(computing)) macOS [Syncthing](https://syncthing.net) tray application bundle. It bundles its own Syncthing instance and wraps Syncthing background process, making it behave more like a native macOS application and less like a command-line utility with a web browser interface.
